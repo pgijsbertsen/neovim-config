@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout public repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configure Git
         run: |
@@ -25,4 +25,4 @@ jobs:
           git submodule update --remote --merge  # Update the submodule to the latest commit
           git add .config/nvim  # Add the updated submodule
           git commit -m "Update nvim to latest commit" || echo "No changes to commit"
-          git push https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/pgijsbertsen/dotfiles.git
+          git push
