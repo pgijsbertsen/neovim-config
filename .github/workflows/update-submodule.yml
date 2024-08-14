@@ -1,0 +1,28 @@
+name: Update Submodule in Private Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Clone private repo
+        run: |
+          git clone https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/pgijsbertsen/dotfiles
+          cd dotfiles
+          git submodule update --remote --merge  # Update the submodule to the latest commit
+          git add .config/nvim  # Add the updated submodule
+          git commit -m "Update nvim to latest commit" || echo "No changes to commit"
+          git push https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/pgijsbertsen/dotfiles.git
