@@ -1,6 +1,6 @@
 return {
-  'stevearc/dressing.nvim',
-  opts = {
-    default_prompt = "select",
-  },
+	"stevearc/dressing.nvim",
+	opts = {
+		default_prompt = "select",
+	},
 }
