@@ -8,7 +8,7 @@ return {
   },
   event = "VeryLazy",
   keys = {
-    { "<leader>o", "<cmd>Neotree toggle<cr>", desc = "Toggle Neo-tree" }
+    { "<leader>o", "<cmd>Neotree toggle<cr>", desc = "Toggle Neo-tree" },
   },
   opts = {
     enable_git_status = true,
@@ -24,7 +24,7 @@ return {
         symbol = "",
       },
       icon = {
-        folder_closed = "",
+        folder_closed = "",
         folder_open = "",
         folder_empty = "",
         folder_empty_open = "",
@@ -102,7 +102,7 @@ return {
         if node:has_children() then
           if not node:is_expanded() then -- if unexpanded, expand
             state.commands.toggle_node(state)
-          else                           -- if expanded and has children, seleect the next child
+          else                      -- if expanded and has children, seleect the next child
             if node.type == "file" then
               state.commands.open(state)
             else
@@ -114,5 +114,23 @@ return {
         end
       end,
     },
-  }
+    autocmds = {
+      neotree_refresh = {
+        event = "TermClose",
+        pattern = "*lazygit*",
+        desc = "Refresh Neo-Tree sources when closing lazygit",
+        callback = function()
+          local manager_avail, manager = pcall(require, "neo-tree.sources.manager")
+          if manager_avail then
+            for _, source in ipairs({ "filesystem", "git_status", "document_symbols" }) do
+              local module = "neo-tree.sources." .. source
+              if package.loaded[module] then
+                manager.refresh(require(module).name)
+              end
+            end
+          end
+        end,
+      },
+    },
+  },
 }
