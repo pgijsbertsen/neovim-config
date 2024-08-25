@@ -31,4 +31,3 @@ vim.keymap.set("n", "k", "gk")
 -- Move to start/end of line
 vim.keymap.set({ "n", "x", "o" }, "H", "^")
 vim.keymap.set({ "n", "x", "o" }, "L", "g_")
-

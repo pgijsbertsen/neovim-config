@@ -67,6 +67,11 @@ return {
           map("<leader>Ps", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
           map("<leader>gf", vim.lsp.buf.format, "Format file")
+          map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
+          map("K", vim.lsp.buf.hover, "Hover Documentation")
+          map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
+          map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+          map("ga", vim.lsp.buf.code_action, "Code Action")
         end
 
         lsp_zero.extend_lspconfig({
@@ -77,16 +82,16 @@ return {
 
         require("mason-lspconfig").setup({
           ensure_installed = {
-            "ansiblels",                 -- Ansible
-            "bashls",                    -- Bash
-            "bzl",                       -- Starlark
+            "ansiblels",                       -- Ansible
+            "bashls",                          -- Bash
+            "bzl",                             -- Starlark
             "docker_compose_language_service", -- Docker Compose
-            "gopls",                     -- GO
-            "jinja_lsp",                 -- Jinja
-            "lua_ls",                    -- Lua
-            "pyright",                   -- Python
-            "terraformls",               -- Terraform
-            "yamlls",                    -- YAML
+            "gopls",                           -- GO
+            "jinja_lsp",                       -- Jinja
+            "lua_ls",                          -- Lua
+            "pyright",                         -- Python
+            "terraformls",                     -- Terraform
+            "yamlls",                          -- YAML
           },
           handlers = {
             function(server_name)
