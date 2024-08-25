@@ -65,6 +65,8 @@ return {
 					map("<leader>p", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
 					map("<leader>P", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
 					map("<leader>Ps", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
+
+					map("<leader>gf", vim.lsp.buf.format, "Format file")
 				end
 
 				lsp_zero.extend_lspconfig({
