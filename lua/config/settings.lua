@@ -9,7 +9,6 @@ vim.g.loaded_netrwPlugin = 1
 -- Settings
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 vim.opt.showtabline = 0 -- always show tabs
 vim.opt.ignorecase = true -- ignore case when searching
@@ -24,7 +23,7 @@ vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.tabstop = 2 -- number of spaces tabs count for
 vim.opt.softtabstop = 2 -- number of spaces tabs count for
 vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
-vim.opt.cursorline = false -- highlight the current line
+vim.opt.cursorline = true  -- highlight the current line
 vim.opt.number = true -- set numbered lines
 vim.opt.breakindent = true -- wrap lines with indent
 vim.opt.relativenumber = true -- set relative numbered lines

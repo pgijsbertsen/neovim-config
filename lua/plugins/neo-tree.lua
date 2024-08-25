@@ -1,6 +1,5 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  -- branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
@@ -19,9 +18,6 @@ return {
         padding = 0,
         with_markers = true,
         with_expanders = true,
-      },
-      modified = {
-        symbol = "",
       },
       icon = {
         folder_closed = "",
@@ -51,8 +47,6 @@ return {
       width = 30,
       mappings = {
         ["<Space>"] = false,
-        ["[b"] = "prev_source",
-        ["]b"] = "next_source",
         h = "parent_or_close",
         l = "child_or_open",
       },
