@@ -8,8 +8,8 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Settings
 vim.opt.backup = false            -- creates a backup file
-vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.showmode = false          -- we don't need to see things like -- INSERT -- anymore
+vim.opt.cmdheight = 0             -- hide vim commandline
 vim.opt.showtabline = 0           -- always show tabs
 vim.opt.ignorecase = true         -- ignore case when searching
 vim.opt.smartcase = true          -- unless capital letter in search
@@ -30,8 +30,23 @@ vim.opt.relativenumber = true     -- set relative numbered lines
 vim.opt.numberwidth = 2           -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"        -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false              -- display lines as one long line
-vim.opt.scrolloff = 8             -- Makes sure there are always eight lines of context
-vim.opt.sidescrolloff = 8         -- Makes sure there are always eight lines of context
+vim.opt.scrolloff = 8             -- makes sure there are always eight lines of context
+vim.opt.sidescrolloff = 8         -- makes sure there are always eight lines of context
 vim.opt.title = true              -- set the title of window to the value of the titlestring
 vim.opt.confirm = true            -- confirm to save changes before exiting modified buffer
 vim.g.have_nerd_font = true       -- enable nerd font support
+
+
+-- allows neovim to access the system clipboard
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
+-- highlight when yanking text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
