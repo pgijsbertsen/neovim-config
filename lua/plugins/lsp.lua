@@ -18,23 +18,40 @@ return {
       event = "InsertEnter",
       dependencies = {
         { "L3MON4D3/LuaSnip" },
+        { "saadparwaiz1/cmp_luasnip" },
       },
       config = function()
         local cmp = require("cmp")
+        local cmp_format = require('lsp-zero').cmp_format({ details = true })
+
+        require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
           sources = {
             { name = "nvim_lsp" },
+            { name = "luasnip" },
           },
           mapping = cmp.mapping.preset.insert({
-            ["<C-Space>"] = cmp.mapping.complete(),
             ["<C-u>"] = cmp.mapping.scroll_docs(-4),
             ["<C-d>"] = cmp.mapping.scroll_docs(4),
+            ["<CR>"] = cmp.mapping.confirm({
+              behavior = cmp.ConfirmBehavior.Replace,
+              select = true,
+            }),
           }),
           snippet = {
             expand = function(args)
               vim.snippet.expand(args.body)
             end,
+          },
+          performance = {
+            debounce = 0, -- default is 60ms
+            throttle = 0, -- default is 30ms
+          },
+          formatting = cmp_format,
+          window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
           },
         })
       end,
@@ -89,7 +106,7 @@ return {
             "gopls",                           -- GO
             "jinja_lsp",                       -- Jinja
             "lua_ls",                          -- Lua
-            "pyright",                         -- Python
+            "basedpyright",                    -- Python
             "terraformls",                     -- Terraform
             "yamlls",                          -- YAML
           },
