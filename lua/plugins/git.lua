@@ -16,11 +16,21 @@ return {
     },
   },
   {
-    "f-person/git-blame.nvim",
-    event = "VeryLazy",
+    "lewis6991/gitsigns.nvim",
     opts = {
-      enabled = true,
-      date_format = "%Y-%m-%d %H:%M",
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 100,
+      },
+      current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d > - <summary>",
+      signs = {
+        add          = { text = "┃ " },
+        change       = { text = "┃ " },
+        delete       = { text = "┃ " },
+        topdelete    = { text = "┃ " },
+        changedelete = { text = "" },
+        untracked    = { text = "┃ " },
+      }
     },
   },
 }

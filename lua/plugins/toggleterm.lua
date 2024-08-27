@@ -13,6 +13,6 @@ return {
     },
   },
   keys = {
-    { "<C-'>", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal" },
+    { "<C-'>", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal", mode = {"n", "t"} }
   },
 }
