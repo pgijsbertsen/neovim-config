@@ -31,3 +31,7 @@ vim.keymap.set("n", "k", "gk")
 -- Move to start/end of line
 vim.keymap.set({ "n", "x", "o" }, "H", "^")
 vim.keymap.set({ "n", "x", "o" }, "L", "g_")
+
+-- Navigate buffers
+vim.keymap.set("n", "]b", ":bnext<CR>", { silent = true, desc = "Next buffer" })
+vim.keymap.set("n", "[b", ":bprevious<CR>", { silent = true, desc = "Previous buffer" })

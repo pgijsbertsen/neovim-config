@@ -8,6 +8,7 @@ return {
       "go",
       "lua",
       "python",
+      "regex",
       "vim",
       "yaml",
     },
