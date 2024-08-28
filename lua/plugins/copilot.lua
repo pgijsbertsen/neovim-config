@@ -12,7 +12,10 @@ return {
           auto_trigger = true,
           keymap = {
             accept = "<S-Tab>",
-          }
+          },
+          filetypes = {
+            yaml = true,
+          },
         },
       })
     end,
