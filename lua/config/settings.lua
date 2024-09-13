@@ -16,6 +16,7 @@ vim.opt.smartcase = true      -- unless capital letter in search
 vim.opt.hlsearch = false      -- do not highlight all matches on previous search pattern
 vim.opt.incsearch = true      -- incrementally highlight searches as you type
 vim.opt.smartindent = true    -- make indenting smarter again
+vim.opt.preserveindent = true -- keep the same indent level when you press enter 
 vim.opt.swapfile = false      -- creates a swapfile
 vim.opt.termguicolors = true  -- set term gui colors (most terminals support this)
 vim.opt.undofile = true       -- enable persistent undo
