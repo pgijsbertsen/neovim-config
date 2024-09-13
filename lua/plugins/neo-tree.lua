@@ -60,6 +60,7 @@ return {
         hide_gitignored = true,
         always_show = {
           ".env",
+          ".envrc",
         },
         never_show = {
           ".DS_Store",

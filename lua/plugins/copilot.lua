@@ -20,4 +20,12 @@ return {
       })
     end,
   },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    build = "make tiktoken",
+    opts = {
+      debug = false,
+    },
+  },
 }
