@@ -9,7 +9,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Fast saving
 vim.keymap.set("n", "<leader>w", ":write!<CR>", { silent = true, desc = "Save file" })
 vim.keymap.set("n", "<leader>c", ":bd<CR>", { silent = true, desc = "Close buffer" })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true, desc = "Quit" })
 vim.keymap.set("n", "<leader>x", ":x<CR>", { silent = true, desc = "Save and Quit" })
 
 -- better indenting

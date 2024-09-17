@@ -10,6 +10,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.backup = false        -- creates a backup file
 vim.opt.showmode = false      -- we don't need to see things like -- INSERT -- anymore
 vim.opt.cmdheight = 0         -- hide vim commandline
+vim.opt.laststatus = 0        -- hide statusline
 vim.opt.showtabline = 0       -- always show tabs
 vim.opt.ignorecase = true     -- ignore case when searching
 vim.opt.smartcase = true      -- unless capital letter in search
@@ -36,7 +37,6 @@ vim.opt.sidescrolloff = 8     -- makes sure there are always eight lines of cont
 vim.opt.title = true          -- set the title of window to the value of the titlestring
 vim.opt.confirm = true        -- confirm to save changes before exiting modified buffer
 vim.g.have_nerd_font = true   -- enable nerd font support
-
 
 -- allows neovim to access the system clipboard
 vim.schedule(function()
