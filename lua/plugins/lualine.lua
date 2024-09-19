@@ -10,5 +10,6 @@ return {
       lualine_z = { "location" },
     },
     sections = {},
+    inactive_sections = {},
   },
 }
