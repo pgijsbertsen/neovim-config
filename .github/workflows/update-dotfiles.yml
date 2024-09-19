@@ -1,0 +1,32 @@
+name: Update neovim-config submodule in dotfiles repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Add mask for repository name
+        run: echo "::add-mask::${{ secrets.REPO_NAME }}"
+
+      - name: Checkout dotfiles repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.REPO_NAME }}
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Update & commit submodules to dotfiles repo
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git submodule update --init --recursive
+          git submodule update --remote --merge
+          git add --all
+          git commit -m "Update nvim-config to latest commit" || echo "No changes to commit"
+          git push
+
