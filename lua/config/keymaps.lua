@@ -10,18 +10,21 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>w", ":write!<CR>", { silent = true, desc = "Save file" })
 vim.keymap.set("n", "<leader>c", ":bd<CR>", { silent = true, desc = "Close buffer" })
 vim.keymap.set("n", "<leader>x", ":x<CR>", { silent = true, desc = "Save and Quit" })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true, desc = "Quit" })
 
--- better indenting
+-- Better indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- paste over currently selected text without yanking it
+-- Paste over currently selected text without yanking it
 vim.keymap.set("v", "p", '"_dp')
 vim.keymap.set("v", "P", '"_dP')
 
--- copy everything between { and } including the brackets
--- p puts text after the cursor,
--- P puts text before the cursor.
+-- Prevent deleting from also copying
+vim.keymap.set({'n', 'v'}, 'd', '"_d', { noremap = true })
+vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
+
+-- Copy everything between { and } including the brackets
 vim.keymap.set("n", "YY", "va{Vy")
 
 -- Move line on the screen rather than by line in the file

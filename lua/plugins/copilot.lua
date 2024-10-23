@@ -27,5 +27,8 @@ return {
     opts = {
       debug = false,
     },
-  },
+    keys = {
+      { "<leader>gc", "<cmd>CopilotChat<cr>", desc = "Open Copilot Chat", mode = "n" }
+    },
+  }
 }

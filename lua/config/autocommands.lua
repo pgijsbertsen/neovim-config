@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end
 })
 
--- Set filetype to ansible-yaml for yaml files in ansible directorie
+-- Set filetype to ansible-yaml for yaml files in ansible directory
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.yaml", "*.yml" },
   callback = function()
