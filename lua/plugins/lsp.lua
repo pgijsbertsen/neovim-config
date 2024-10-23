@@ -82,12 +82,11 @@ return {
           map("<leader>p", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
           map("<leader>P", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
           map("<leader>Ps", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
-
           map("<leader>gf", vim.lsp.buf.format, "Format file")
           map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
           map("K", vim.lsp.buf.hover, "Hover Documentation")
           map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
-          map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+          map("gd", vim.lsp.buf.declaration, "Goto Declaration")
           map("ga", vim.lsp.buf.code_action, "Code Action")
         end
 
@@ -101,7 +100,7 @@ return {
           ensure_installed = {
             "ansiblels",                       -- Ansible
             "bashls",                          -- Bash
-            "bzl",                             -- Starlark
+            "starpls",                         -- Starlark
             "docker_compose_language_service", -- Docker Compose
             "gopls",                           -- GO
             "jinja_lsp",                       -- Jinja

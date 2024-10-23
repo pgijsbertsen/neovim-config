@@ -9,6 +9,7 @@ return {
       "lua",
       "python",
       "regex",
+      "starlark",
       "vim",
       "yaml",
     },
