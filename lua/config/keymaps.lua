@@ -38,3 +38,9 @@ vim.keymap.set({ "n", "x", "o" }, "L", "g_")
 -- Navigate buffers
 vim.keymap.set("n", "]b", ":bnext<CR>", { silent = true, desc = "Next buffer" })
 vim.keymap.set("n", "[b", ":bprevious<CR>", { silent = true, desc = "Previous buffer" })
+
+-- Navigate windows
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true, desc = "Move to window left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true, desc = "Move to window below" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true, desc = "Move to window above" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, desc = "Move to window right" })
