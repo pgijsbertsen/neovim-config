@@ -75,12 +75,13 @@ return {
         ensure_installed = {
           "ansiblels",                       -- Ansible
           "bashls",                          -- Bash
-          "starpls",                         -- Starlark
           "docker_compose_language_service", -- Docker Compose
           "gopls",                           -- GO
+          "helm_ls",                         -- K8s Helm Charts
           "jinja_lsp",                       -- Jinja
           "lua_ls",                          -- Lua
           "basedpyright",                    -- Python
+          "starpls",                         -- Starlark
           "terraformls",                     -- Terraform
           "yamlls",                          -- YAML
         },
