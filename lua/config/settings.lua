@@ -42,3 +42,10 @@ vim.g.have_nerd_font = true   -- enable nerd font support
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
+
+-- ghostty terminal title
+if vim.fn.getenv("TERM_PROGRAM") == "ghostty" then
+  vim.opt.title = true
+  vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')}"
+end
+
