@@ -58,8 +58,8 @@ return {
       local nvim_lsp = require('lspconfig')
       local mason = require('mason')
       local mason_lspconfig = require('mason-lspconfig')
-      -- local null_ls = require('null-ls')
-      -- local mason_null_ls = require('mason-null-ls')
+      local null_ls = require('null-ls')
+      local mason_null_ls = require('mason-null-ls')
 
       -- Set default capabilities for LSP
       local lspconfig_defaults = nvim_lsp.util.default_config
@@ -80,11 +80,11 @@ return {
           "helm_ls",                         -- K8s Helm Charts
           "jinja_lsp",                       -- Jinja
           "lua_ls",                          -- Lua
-          "basedpyright",                    -- Python
           "starpls",                         -- Starlark
           "terraformls",                     -- Terraform
           "yamlls",                          -- YAML
         },
+        automatic_installation = true,
         handlers = {
           function(server_name)
             nvim_lsp[server_name].setup({})
@@ -92,36 +92,31 @@ return {
         },
       })
 
-      -- TODO: Doesn't work how I want it to yet
-      --
-      -- -- Setup formatting and diagnostics 
-      -- mason_null_ls.setup(
-      --   {
-      --     ensure_installed = {
-      --       -- Formatters
-      --       "ansible-lint",                    -- Ansible
-      --       "black",                           -- Python
-      --       "isort",                           -- Python
-      --       "yamllint",                        -- YAML
-      --       -- Diagnostic
-      --       "flake8",                          -- Python
-      --       "mypy",                            -- Python
-      --     },
-      --   }
-      -- )
-      -- null_ls.setup({
-      --   sources = {
-      --     -- Python
-      --     null_ls.builtins.formatting.black,
-      --     null_ls.builtins.formatting.isort,
-      --     null_ls.builtins.diagnostics.flake8,
-      --     null_ls.builtins.diagnostics.mypy,
-      --     -- Ansible 
-      --     null_ls.builtins.formatting.ansible_lint,
-      --     -- YAML
-      --     null_ls.builtins.formatting.yamllint,
-      --   },
-      -- })
+      -- Setup formatting and diagnostics 
+      mason_null_ls.setup({
+        ensure_installed = {
+          -- Formatters
+          "ansible-lint",                    -- Ansible
+          "yamllint",                        -- YAML
+          "ruff",                            -- Python
+          "shfmt",                           -- Shell
+          "gofumpt",                         -- Go
+          -- Diagnostic
+          "mypy",                            -- Python
+        },
+        automatic_installation = true,
+      })
+
+      local null_ls_sources = {
+        null_ls.builtins.formatting.mypy,
+        null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.diagnostics.yamllint,
+      }
+
+      null_ls.setup({
+        debug = true,
+        sources = null_ls_sources,
+      })
 
       -- Setup keymaps
       vim.api.nvim_create_autocmd('LspAttach', {
