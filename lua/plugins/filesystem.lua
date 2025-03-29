@@ -70,6 +70,7 @@ return {
           },
           hide_by_name = {
             ".git",
+            ".ansible",
           },
         },
       },
@@ -136,22 +137,5 @@ return {
         desc = "Search and Replace",
       },
     },
-  },
-
-  --- Smart-open
-  {
-    "danielfalk/smart-open.nvim",
-    branch = "0.2.x",
-    config = function()
-      require("telescope").load_extension("smart_open")
-    end,
-    dependencies = {
-      "kkharji/sqlite.lua",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    },
-    keys = {
-      { "<leader><leader>", "<CMD>Telescope smart_open<CR>", desc = "Smart-open" },
-    },
-
   },
 }
